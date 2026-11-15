@@ -1,0 +1,25 @@
+WEBVTT
+
+00:00.000 --> 00:04.250
+Sprig 0.1 Preview: the user starts local VPN capture.
+
+00:04.250 --> 00:20.350
+Android requests notification permission. The user allows notifications.
+
+00:20.350 --> 00:39.460
+Android displays the VPN connection request. The user confirms it.
+
+00:39.460 --> 00:57.680
+VPN capture is active. Sprig must continuously process live network traffic.
+
+00:57.680 --> 01:14.500
+A separate local test app completes 20 requests with zero errors while Sprig runs in the background.
+
+01:14.500 --> 01:38.300
+The ongoing notification shows that Sprig capture is active while another app is open.
+
+01:38.300 --> 02:01.330
+Returning to Sprig shows 20 captured requests and successful HTTP 200 responses. Demo endpoint details are masked.
+
+02:01.330 --> 02:17.200
+The user stops capture. Sprig returns to the offline state and the VPN indicator disappears.
