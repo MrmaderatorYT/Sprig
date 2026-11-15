@@ -1,6 +1,6 @@
 # Sprig — Android web security workspace
 
-**Sprig 0.1 Preview** (`versionCode=1`), пакет **`com.ccs.sprig`**. Увесь код застосунку, протокольних модулів, Scanner і серверної частини написаний на **Java**. Gradle — Groovy; немає Kotlin compiler plugin, Compose чи NDK-модуля. Інтерфейс — нативний Material Design 3.
+**Sprig 0.1.1 Preview** (`versionCode=2`), пакет **`com.ccs.sprig`**. Увесь код застосунку, протокольних модулів, Scanner і серверної частини написаний на **Java**. Gradle — Groovy; немає Kotlin compiler plugin, Compose чи NDK-модуля. Інтерфейс — нативний Material Design 3.
 
 Це самостійний інструмент для інспекції й тестування, а не ліцензійна копія продукту PortSwigger. HTTP/2, HTTP/3, WebSocket, Intruder, Scanner і Collaborator реалізовані; повна функціональна паритетність із Burp Suite Professional ще не заявляється.
 
@@ -38,7 +38,7 @@ HTTP/2 використовує Netty для HPACK; HTTP/3 — Java Kwik/Agent15
 - Debug APK: `app/build/outputs/apk/debug/app-debug.apk`.
 - R8 release APK: `app/build/outputs/apk/release/app-release-unsigned.apk`; для розповсюдження потрібен ваш ключ підпису.
 - Java-сервер: `collaborator-server/build/distributions/collaborator-server-0.3.0.zip`.
-- Старі локальні preview-артефакти підписані debug-ключем. GitHub Release **0.1 Preview** містить APK, підписаний власним release-ключем розробника. Ключ і пароль не включені у вихідні коди.
+- Старі локальні preview-артефакти підписані debug-ключем. GitHub Release **0.1.1 Preview** містить APK, підписаний власним release-ключем розробника. Ключ і пароль не включені у вихідні коди.
 
 ## Перший запуск і протоколи
 
@@ -108,3 +108,11 @@ APK підписаний release-сертифікатом, а не debug-сер�
 SHA-256 та fingerprint підпису наведено в release assets/notes. `stage04-validation-evidence.zip` містить історичні результати локальних fixtures, на які посилаються roadmap/docs через `dist/stage04/`; для локальних посилань розпакуйте архів у корінь проєкту. Звіт release-перевірок: [docs/RELEASE_0_1_PREVIEW.md](docs/RELEASE_0_1_PREVIEW.md).
 
 Приватні ключі, паролі, `local.properties`, кеші, captures і build outputs виключені з Git. `fixture-test-only.p12` — навмисно публічний fixture, описаний у third-party notices; це не ключ підпису застосунку.
+
+## Open beta 0.1.1 Preview
+
+Інтерфейс має англійські та українські ресурси. Android 13+ дозволяє вибрати мову Sprig у системних налаштуваннях застосунку; старіші Android використовують мову пристрою. Налаштування → Про Sprig показують фактичні package/version/versionCode, вихідний код і перехід до налаштувань мови. Протокольні дані, назви стандартів, первинні повідомлення transport/core та технічні описи findings у звітах зберігаються без автоматичного перекладу.
+
+При першому запуску з’являється попередження про відкриту бету. Підтвердження зберігається після «Зрозуміло»; перезапуск або поворот перед підтвердженням не приховує попередження. Його можна відкрити повторно в налаштуваннях. Відгуки: **cybercraftstudiopro@gmail.com**. Кнопка відкриває поштову чернетку лише з адресою й темою: жодних captures, вкладень або діагностики автоматично не додається і не надсилається.
+
+[Поточний реліз](https://github.com/MrmaderatorYT/Sprig/releases/tag/v0.1.1-preview) · [Сторінка EN/UK](https://mrmaderatoryt.github.io/Sprig/) · [Перевірки 0.1.1](docs/RELEASE_0_1_1_PREVIEW.md). Попередні release-звіти нижче/вище зберігають власні версії та факти.

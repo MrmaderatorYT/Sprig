@@ -63,24 +63,24 @@ public final class CollaboratorActivity extends AppCompatActivity {
         LinearLayout root=column();root.setBackgroundColor(BG);root.setFocusableInTouchMode(true);
         ViewCompat.setOnApplyWindowInsetsListener(root,(v,insets)->{Insets bars=insets.getInsets(WindowInsetsCompat.Type.systemBars()|WindowInsetsCompat.Type.ime());v.setPadding(bars.left,bars.top,bars.right,bars.bottom);return insets;});
         LinearLayout header=row();header.setGravity(Gravity.CENTER_VERTICAL);header.setPadding(dp(12),0,dp(20),0);
-        MaterialButton back=button("‹",false);back.setContentDescription("Back");back.setOnClickListener(v->finish());header.addView(back,new LinearLayout.LayoutParams(dp(52),dp(56)));
+        MaterialButton back=button("‹",false);back.setContentDescription(UiText.get(R.string.ui_back_b52b3));back.setOnClickListener(v->finish());header.addView(back,new LinearLayout.LayoutParams(dp(52),dp(56)));
         TextView title=text("Collaborator",24,TEXT);header.addView(title);root.addView(header);
         ScrollView scroll=new ScrollView(this);LinearLayout body=column();body.setPadding(dp(20),dp(10),dp(20),dp(30));scroll.addView(body);root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
-        add(body,text("Generate a private callback address, use it in a request, then collect DNS, HTTP or SMTP interactions from your own server.",13,MUTED),0);
+        add(body,text(UiText.get(R.string.ui_generate_a_private_callback_address_use_it_in_a_request_8989f),13,MUTED),0);
         MaterialCardView configuration=card();LinearLayout config=inside();
-        TextInputLayout api=field("Server API URL",false);apiEditor=(TextInputEditText)api.getEditText();apiEditor.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_URI);
+        TextInputLayout api=field(UiText.get(R.string.ui_server_api_url_22646),false);apiEditor=(TextInputEditText)api.getEditText();apiEditor.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_URI);
         ViewState state=model.snapshot();apiEditor.setText(model.apiDraft!=null?model.apiDraft:state.api.isEmpty()?SprigApp.get().getPreferences().getString("collaborator_url",""):state.api);config.addView(api);
-        TextInputLayout key=field("Admin key · needed to generate",true);keyEditor=(TextInputEditText)key.getEditText();add(config,key,12);
-        add(config,text("Remote APIs require HTTPS. Keys and payload sessions stay in memory. The server is supplied with the project and needs a public domain for external callbacks.",11,MUTED),12);
-        create=button("Generate callback address",true);create.setOnClickListener(v->create());add(config,create,16);configuration.addView(config);add(body,configuration,20);
-        MaterialCardView session=card();LinearLayout current=inside();current.addView(text("CALLBACK",10,PRIMARY));
-        host=text("No callback address generated",15,TEXT);host.setTypeface(Typeface.MONOSPACE);host.setTextIsSelectable(true);add(current,host,12);
+        TextInputLayout key=field(UiText.get(R.string.ui_admin_key_needed_to_generate_47071),true);keyEditor=(TextInputEditText)key.getEditText();add(config,key,12);
+        add(config,text(UiText.get(R.string.ui_remote_apis_require_https_keys_and_payload_sessions_sta_2c822),11,MUTED),12);
+        create=button(UiText.get(R.string.ui_generate_callback_address_d63a4),true);create.setOnClickListener(v->create());add(config,create,16);configuration.addView(config);add(body,configuration,20);
+        MaterialCardView session=card();LinearLayout current=inside();current.addView(text(UiText.get(R.string.ui_callback_67827),10,PRIMARY));
+        host=text(UiText.get(R.string.ui_no_callback_address_generated_0f24c),15,TEXT);host.setTypeface(Typeface.MONOSPACE);host.setTextIsSelectable(true);add(current,host,12);
         capabilities=text("",11,MUTED);add(current,capabilities,8);
-        MaterialButton copy=button("Copy hostname",false);copy.setOnClickListener(v->{CollaboratorClient.Session active=model.snapshot().session;if(active!=null){((ClipboardManager)getSystemService(CLIPBOARD_SERVICE)).setPrimaryClip(ClipData.newPlainText("Callback hostname",active.payloadHost));toast("Callback hostname copied");}});add(current,copy,10);
-        LinearLayout actions=row();poll=button("Poll now",true);revoke=button("Revoke",false);poll.setOnClickListener(v->model.poll());revoke.setOnClickListener(v->model.revoke());actions.addView(poll,new LinearLayout.LayoutParams(0,dp(52),1));actions.addView(revoke,new LinearLayout.LayoutParams(0,dp(52),1));add(current,actions,8);
+        MaterialButton copy=button(UiText.get(R.string.ui_copy_hostname_53ba8),false);copy.setOnClickListener(v->{CollaboratorClient.Session active=model.snapshot().session;if(active!=null){((ClipboardManager)getSystemService(CLIPBOARD_SERVICE)).setPrimaryClip(ClipData.newPlainText(UiText.get(R.string.ui_callback_hostname_c10e4),active.payloadHost));toast(UiText.get(R.string.ui_callback_hostname_copied_c75b0));}});add(current,copy,10);
+        LinearLayout actions=row();poll=button(UiText.get(R.string.ui_poll_now_b55b6),true);revoke=button(UiText.get(R.string.ui_revoke_0be72),false);poll.setOnClickListener(v->model.poll());revoke.setOnClickListener(v->model.revoke());actions.addView(poll,new LinearLayout.LayoutParams(0,dp(52),1));actions.addView(revoke,new LinearLayout.LayoutParams(0,dp(52),1));add(current,actions,8);
         MaterialSwitch autoPoll=new MaterialSwitch(this);autoPoll.setText(getString(R.string.collaborator_autopoll));autoPoll.setTextColor(TEXT);autoPoll.setChecked(model.auto);autoPoll.setOnCheckedChangeListener((b,value)->model.auto=value);add(current,autoPoll,10);
         session.addView(current);add(body,session,16);
-        LinearLayout resultHeader=row();resultHeader.setGravity(Gravity.CENTER_VERTICAL);resultHeader.addView(text("Interactions",20,TEXT),new LinearLayout.LayoutParams(0,-2,1));MaterialButton export=button(getString(R.string.common_export),false);export.setOnClickListener(v->export());resultHeader.addView(export);add(body,resultHeader,22);
+        LinearLayout resultHeader=row();resultHeader.setGravity(Gravity.CENTER_VERTICAL);resultHeader.addView(text(UiText.get(R.string.ui_interactions_0b358),20,TEXT),new LinearLayout.LayoutParams(0,-2,1));MaterialButton export=button(getString(R.string.common_export),false);export.setOnClickListener(v->export());resultHeader.addView(export);add(body,resultHeader,22);
         status=text("",12,MUTED);add(body,status,8);events=column();add(body,events,12);
         setContentView(root);root.requestFocus();render();
     }
@@ -89,26 +89,26 @@ public final class CollaboratorActivity extends AppCompatActivity {
     @Override protected void onDestroy(){model.observer=null;handler.removeCallbacksAndMessages(null);super.onDestroy();}
     private void create(){
         ViewState state=model.snapshot();if(state.busy)return;String api=apiEditor.getText().toString().trim(),key=keyEditor.getText().toString();
-        if(key.length()<32){toast("Enter the private server admin key");return;}
+        if(key.length()<32){toast(UiText.get(R.string.ui_enter_the_private_server_admin_key_8a7b9));return;}
         Runnable generate=()->{keyEditor.setText("");model.generate(api,key);};
-        if(state.session!=null)new MaterialAlertDialogBuilder(this).setTitle("Replace callback address?").setMessage("The previous address remains valid on the server until revoked or expired. Export its events first.").setPositiveButton("Generate new",(d,w)->generate.run()).setNegativeButton(getString(R.string.common_cancel),null).show();else generate.run();
+        if(state.session!=null)new MaterialAlertDialogBuilder(this).setTitle(UiText.get(R.string.ui_replace_callback_address_bf331)).setMessage(UiText.get(R.string.ui_the_previous_address_remains_valid_on_the_server_until_47212)).setPositiveButton(UiText.get(R.string.ui_generate_new_f975e),(d,w)->generate.run()).setNegativeButton(getString(R.string.common_cancel),null).show();else generate.run();
     }
     private void render(){
         ViewState state=model.snapshot();CollaboratorClient.Session session=state.session;
-        host.setText(session==null?"No callback address generated":session.payloadHost);capabilities.setText(session==null?"":String.join(" · ",session.protocols)+"\nExpires "+new SimpleDateFormat("yyyy-MM-dd HH:mm",Locale.getDefault()).format(new Date(session.expiresAt)));
+        host.setText(session==null?UiText.get(R.string.ui_no_callback_address_generated_0f24c):session.payloadHost);capabilities.setText(session==null?"":String.join(" · ",session.protocols)+UiText.get(R.string.ui_nexpires_c1567)+new SimpleDateFormat("yyyy-MM-dd HH:mm",Locale.getDefault()).format(new Date(session.expiresAt)));
         poll.setEnabled(!state.busy&&session!=null);revoke.setEnabled(!state.busy&&session!=null);create.setEnabled(!state.busy);
-        status.setTextColor(state.error?ERROR:MUTED);status.setText(state.busy?"Contacting private Collaborator server…":state.message.isEmpty()?state.events.size()+" recorded interaction(s)":state.message);
+        status.setTextColor(state.error?ERROR:MUTED);status.setText(state.busy?UiText.get(R.string.ui_contacting_private_collaborator_server_58016):state.message.isEmpty()?getString(R.string.recorded_interactions_count,state.events.size()):state.message);
         events.removeAllViews();
-        if(state.events.isEmpty()){add(events,text("Your callback interactions will appear here. Generating an address does not contact the system you are testing.",13,MUTED),8);return;}
+        if(state.events.isEmpty()){add(events,text(UiText.get(R.string.ui_your_callback_interactions_will_appear_here_generating_41674),13,MUTED),8);return;}
         int first=Math.max(0,state.events.size()-100);
         for(int i=state.events.size()-1;i>=first;i--){Interaction event=state.events.get(i);MaterialCardView card=card();LinearLayout box=inside();box.addView(text(event.protocol+"  ·  "+new SimpleDateFormat("HH:mm:ss",Locale.ROOT).format(new Date(event.timeMillis)),12,PRIMARY));add(box,text(event.summary,13,TEXT),7);add(box,text(event.remoteAddress,11,MUTED),6);card.addView(box);card.setOnClickListener(v->{TextView details=text(event.details,11,TEXT);details.setTypeface(Typeface.MONOSPACE);details.setTextIsSelectable(true);details.setPadding(dp(20),dp(8),dp(20),dp(8));ScrollView scroll=new ScrollView(this);scroll.addView(details);new MaterialAlertDialogBuilder(this).setTitle(event.protocol+" interaction").setView(scroll).setPositiveButton(getString(R.string.common_close),null).show();});add(events,card,8);}
     }
-    private void export(){if(model.snapshot().events.isEmpty()){toast("No interactions to export");return;}startActivityForResult(new Intent(Intent.ACTION_CREATE_DOCUMENT).addCategory(Intent.CATEGORY_OPENABLE).setType("application/json").putExtra(Intent.EXTRA_TITLE,"sprig-interactions.json"),EXPORT);}
+    private void export(){if(model.snapshot().events.isEmpty()){toast(UiText.get(R.string.ui_no_interactions_to_export_204e9));return;}startActivityForResult(new Intent(Intent.ACTION_CREATE_DOCUMENT).addCategory(Intent.CATEGORY_OPENABLE).setType("application/json").putExtra(Intent.EXTRA_TITLE,"sprig-interactions.json"),EXPORT);}
     @Override protected void onActivityResult(int request,int result,Intent data){
         super.onActivityResult(request,result,data);if(request!=EXPORT||result!=RESULT_OK||data==null||data.getData()==null)return;
         Uri target=data.getData();List<Object> output=new ArrayList<>();for(Interaction event:model.snapshot().events)output.add(event.json());String json=Json.encode(Json.map("generator","Sprig","events",output));
         android.content.ContentResolver resolver=getApplicationContext().getContentResolver();
-        model.export(()->{try(OutputStream stream=resolver.openOutputStream(target,"wt")){if(stream==null)throw new IOException("Cannot open export");stream.write(json.getBytes(StandardCharsets.UTF_8));}});
+        model.export(()->{try(OutputStream stream=resolver.openOutputStream(target,"wt")){if(stream==null)throw new IOException(UiText.get(R.string.ui_cannot_open_export_5750c));stream.write(json.getBytes(StandardCharsets.UTF_8));}});
     }
 
     interface ExportAction{void write()throws IOException;}
@@ -145,7 +145,7 @@ public final class CollaboratorActivity extends AppCompatActivity {
         void generate(String api,String key){
             if(!begin())return;ClientFactory factory=clients;
             submitOperation(()->{try{CollaboratorClient.Session created=factory.client(api).create(key);
-                synchronized(SHARED){SHARED.api=api;SHARED.session=created;SHARED.cursor=0;SHARED.events.clear();SHARED.bytes=0;SHARED.evicted=false;SHARED.message="Callback address ready. Paste it into a test request, then poll for interactions.";}
+                synchronized(SHARED){SHARED.api=api;SHARED.session=created;SHARED.cursor=0;SHARED.events.clear();SHARED.bytes=0;SHARED.evicted=false;SHARED.message=UiText.get(R.string.ui_callback_address_ready_paste_it_into_a_test_request_the_a5559);}
                 SprigApp.get().getPreferences().edit().putString("collaborator_url",api).apply();complete(null);
             }catch(Exception error){complete(error);}});
         }
@@ -154,16 +154,16 @@ public final class CollaboratorActivity extends AppCompatActivity {
             synchronized(SHARED){if(SHARED.busy||SHARED.session==null)return;session=SHARED.session;cursor=SHARED.cursor;api=SHARED.api;}
             if(!begin())return;ClientFactory factory=clients;
             submitOperation(()->{try{CollaboratorClient.Poll result=factory.client(api).poll(session,cursor);
-                synchronized(SHARED){if(SHARED.session==session){for(Interaction event:result.events)append(event);SHARED.cursor=result.cursor;SHARED.message=result.truncated?"Some older interactions expired on the server. Export received events to retain them.":result.events.isEmpty()?"No new interactions. The server must be reachable from the tested system.":result.events.size()+" new interaction(s)";if(SHARED.evicted)SHARED.message+=" Older local events were evicted from the memory limit.";}}
+                synchronized(SHARED){if(SHARED.session==session){for(Interaction event:result.events)append(event);SHARED.cursor=result.cursor;SHARED.message=result.truncated?UiText.get(R.string.ui_some_older_interactions_expired_on_the_server_export_re_9f6d7):result.events.isEmpty()?UiText.get(R.string.ui_no_new_interactions_the_server_must_be_reachable_from_t_7adce):UiText.get(R.string.new_interactions_count,result.events.size());if(SHARED.evicted)SHARED.message+=UiText.get(R.string.ui_older_local_events_were_evicted_from_the_memory_limit_9fe8f);}}
                 complete(null);
             }catch(Exception error){complete(error);}});
         }
         void revoke(){
             CollaboratorClient.Session session;String api;synchronized(SHARED){if(SHARED.busy||SHARED.session==null)return;session=SHARED.session;api=SHARED.api;}
             if(!begin())return;ClientFactory factory=clients;
-            submitOperation(()->{try{factory.client(api).revoke(session);synchronized(SHARED){if(SHARED.session==session)SHARED.session=null;SHARED.message="Callback address revoked. Exported events remain available.";}complete(null);}catch(Exception error){complete(error);}});
+            submitOperation(()->{try{factory.client(api).revoke(session);synchronized(SHARED){if(SHARED.session==session)SHARED.session=null;SHARED.message=UiText.get(R.string.ui_callback_address_revoked_exported_events_remain_availab_99887);}complete(null);}catch(Exception error){complete(error);}});
         }
-        void export(ExportAction action){UiWorkQueue.submit(SHARED.worker,()->{try{action.write();synchronized(SHARED){SHARED.message="Interactions exported";SHARED.error=false;}}catch(Exception error){synchronized(SHARED){SHARED.message="Export failed: "+limit(error.getMessage(),400);SHARED.error=true;}}SHARED.notifyModels();},()->{synchronized(SHARED){SHARED.error=true;SHARED.message=SprigApp.get().getString(R.string.workspace_busy);}SHARED.notifyModels();});}
+        void export(ExportAction action){UiWorkQueue.submit(SHARED.worker,()->{try{action.write();synchronized(SHARED){SHARED.message=UiText.get(R.string.ui_interactions_exported_74129);SHARED.error=false;}}catch(Exception error){synchronized(SHARED){SHARED.message=UiText.get(R.string.ui_export_failed_c93ab)+limit(error.getMessage(),400);SHARED.error=true;}}SHARED.notifyModels();},()->{synchronized(SHARED){SHARED.error=true;SHARED.message=SprigApp.get().getString(R.string.workspace_busy);}SHARED.notifyModels();});}
         private void submitOperation(Runnable task){UiWorkQueue.submit(SHARED.worker,task,()->complete(new IOException(SprigApp.get().getString(R.string.workspace_busy))));}
         private void complete(Exception error){
             synchronized(SHARED){SHARED.busy=false;SHARED.error=error!=null;if(error!=null){String message=error.getMessage();SHARED.message=limit(message==null?error.getClass().getSimpleName():message,500);}}

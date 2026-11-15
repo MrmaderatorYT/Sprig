@@ -17,6 +17,7 @@
         android:fullBackupContent="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:label="Sprig"
+        android:localeConfig="@xml/locales_config"
         android:icon="@drawable/ic_launcher"
         android:roundIcon="@drawable/ic_launcher"
         android:theme="@style/Theme.Sprig"

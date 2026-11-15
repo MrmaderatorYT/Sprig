@@ -1,5 +1,7 @@
 package com.ccs.sprig.vpn;
 
+import com.ccs.sprig.ui.UiText;
+
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -82,8 +84,8 @@ public final class CaptureVpnService extends VpnService {
 
     @Override public void onCreate() {
         super.onCreate();
-        NotificationChannel channel=new NotificationChannel(CHANNEL,"Traffic capture",NotificationManager.IMPORTANCE_LOW);
-        channel.setDescription("Local VPN capture status and stop control");
+        NotificationChannel channel=new NotificationChannel(CHANNEL,UiText.get(R.string.ui_traffic_capture_c0e94),NotificationManager.IMPORTANCE_LOW);
+        channel.setDescription(UiText.get(R.string.ui_local_vpn_capture_status_and_stop_control_b4640));
         channel.setShowBadge(false);
         getSystemService(NotificationManager.class).createNotificationChannel(channel);
     }
@@ -92,7 +94,7 @@ public final class CaptureVpnService extends VpnService {
             latestStartId=startId;
             desiredStart=intent!=null&&ACTION_START.equals(intent.getAction());
             if(desiredStart){
-                Notification notice=notification("Starting local capture…");
+                Notification notice=notification(UiText.get(R.string.ui_starting_local_capture_1552f));
                 if(Build.VERSION.SDK_INT>=34)startForeground(NOTIFICATION_ID,notice,ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
                 else startForeground(NOTIFICATION_ID,notice);
             }
@@ -110,7 +112,7 @@ public final class CaptureVpnService extends VpnService {
                 if(pending!=null&&pending.epoch==engineEpoch.get()&&current==this)error=message(pending.error);
                 shutdownCaptureLocked(true,token);stopLatest(token,startId);return;
             }
-            if(active&&current==this&&pending==null){updateNotification("Capturing IPv4 traffic locally · IPv6 blocked");return;}
+            if(active&&current==this&&pending==null){updateNotification(UiText.get(R.string.ui_capturing_ipv4_traffic_locally_ipv6_blocked_a22ce));return;}
             try{
                 shutdownCaptureLocked(false,token);
                 if(token!=generation.get()||!desiredStart)return;
@@ -123,7 +125,7 @@ public final class CaptureVpnService extends VpnService {
                 if(token!=generation.get()||!desiredStart){finishSupersededStartup(token,startId,epoch);return;}
                 EngineFailure immediate=fatalFailure.get();
                 if(immediate!=null&&immediate.epoch==epoch){error=message(immediate.error);shutdownCaptureLocked(true,token);stopLatest(token,startId);return;}
-                active=true;updateNotification("Capturing IPv4 traffic locally · IPv6 blocked");notifyState();
+                active=true;updateNotification(UiText.get(R.string.ui_capturing_ipv4_traffic_locally_ipv6_blocked_a22ce));notifyState();
             }catch(Exception failure){
                 if(token!=generation.get()){shutdownCaptureLocked(false,token);return;}
                 error=message(failure);shutdownCaptureLocked(true,token);stopLatest(token,startId);
@@ -149,12 +151,12 @@ public final class CaptureVpnService extends VpnService {
     }
     private void stopLatest(long token,int startId){synchronized(commandLock){if(token==generation.get()&&startId==latestStartId)stopSelf(startId);}}
     private static String message(Exception failure){return failure.getMessage()==null?failure.getClass().getSimpleName():failure.getMessage();}
-    private void checkStarting(long command)throws java.io.InterruptedIOException{if(command!=generation.get()||!desiredStart)throw new java.io.InterruptedIOException("Capture startup superseded");}
+    private void checkStarting(long command)throws java.io.InterruptedIOException{if(command!=generation.get()||!desiredStart)throw new java.io.InterruptedIOException(UiText.get(R.string.ui_capture_startup_superseded_659ca));}
     private CaptureHandle createCapture(long command,TunEngine.Listener fatalListener)throws Exception{
             SprigApp app=SprigApp.get();SharedPreferences preferences=app.getPreferences();ProxyServer proxy=app.getProxy();proxy.start(0);checkStarting(command);
             Intent configure=new Intent(this,MainActivity.class);
             PendingIntent configureIntent=PendingIntent.getActivity(this,0,configure,PendingIntent.FLAG_IMMUTABLE|PendingIntent.FLAG_UPDATE_CURRENT);
-            Builder builder=new Builder().setSession("Sprig local inspection")
+            Builder builder=new Builder().setSession(UiText.get(R.string.ui_sprig_local_inspection_5c7c0))
                     .setMtu(1500).setBlocking(true)
                     .addAddress("10.89.0.2",32).addRoute("0.0.0.0",0)
                     .addAddress("fd89:ca:70::2",128).addRoute("::",0)
@@ -170,10 +172,10 @@ public final class CaptureVpnService extends VpnService {
                     try { builder.addAllowedApplication(packageName); allowed++; }
                     catch(PackageManager.NameNotFoundException ignored) { }
                 }
-                if(allowed==0) throw new IllegalStateException("The selected apps are no longer installed. Update the app scope.");
+                if(allowed==0) throw new IllegalStateException(UiText.get(R.string.ui_the_selected_apps_are_no_longer_installed_update_the_ap_c7661));
             }
             descriptor=builder.establish();
-            if(descriptor==null) throw new IllegalStateException("VPN permission was not granted. Start capture again and accept Android’s VPN request.");
+            if(descriptor==null) throw new IllegalStateException(UiText.get(R.string.ui_vpn_permission_was_not_granted_start_capture_again_and_28802));
             checkStarting(command);
             FileInputStream input=new FileInputStream(descriptor.getFileDescriptor());
             FileOutputStream output=new FileOutputStream(descriptor.getFileDescriptor());
@@ -212,9 +214,9 @@ public final class CaptureVpnService extends VpnService {
         PendingIntent open=PendingIntent.getActivity(this,0,new Intent(this,MainActivity.class),PendingIntent.FLAG_IMMUTABLE|PendingIntent.FLAG_UPDATE_CURRENT);
         PendingIntent stop=PendingIntent.getService(this,1,new Intent(this,CaptureVpnService.class).setAction(ACTION_STOP),PendingIntent.FLAG_IMMUTABLE|PendingIntent.FLAG_UPDATE_CURRENT);
         return new Notification.Builder(this,CHANNEL).setSmallIcon(R.drawable.ic_shield)
-                .setContentTitle("Sprig capture is active").setContentText(text)
+                .setContentTitle(UiText.get(R.string.ui_sprig_capture_is_active_518c7)).setContentText(text)
                 .setContentIntent(open).setOngoing(true).setOnlyAlertOnce(true)
-                .addAction(new Notification.Action.Builder(R.drawable.ic_shield,"Stop",stop).build())
+                .addAction(new Notification.Action.Builder(R.drawable.ic_shield,UiText.get(R.string.ui_stop_9e253),stop).build())
                 .setCategory(Notification.CATEGORY_SERVICE).build();
     }
     private void updateNotification(String text) { getSystemService(NotificationManager.class).notify(NOTIFICATION_ID,notification(text)); }

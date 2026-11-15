@@ -1,5 +1,7 @@
 # Sprig 0.3.0 — перевірка
 
+Актуальні перевірки релізу0.1.1 Preview: [RELEASE_0_1_1_PREVIEW.md](RELEASE_0_1_1_PREVIEW.md).
+
 Це збережений звіт для 0.3.0. Нові результати робочого етапу 0.4 наведено окремо в [STAGE_0_4.md](STAGE_0_4.md).
 
 Дата: 15 листопада 2026 року (Europe/Kyiv). Пакет: `com.ccs.sprig`. JDK17, Gradle8.13, Android compile/targetSDK36, minSDK26.

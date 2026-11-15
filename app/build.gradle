@@ -7,8 +7,8 @@ android {
         applicationId 'com.ccs.sprig'
         minSdk 26
         targetSdk 36
-        versionCode 1
-        versionName '0.1 Preview'
+        versionCode 2
+        versionName '0.1.1 Preview'
         testInstrumentationRunner 'com.ccs.sprig.validation.Stage04Instrumentation'
     }
     buildTypes {

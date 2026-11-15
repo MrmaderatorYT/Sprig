@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="beta_title">Відкрите бета-тестування</string>
+    <string name="beta_message">Sprig перебуває на етапі відкритого бета-тестування. Деякі функції можуть бути незавершеними, можливі помилки.\n\nВи можете добровільно поділитися відгуком, повідомленням про помилку або іншими даними, які вирішите надати, надіславши їх на cybercraftstudiopro@gmail.com. Перед надсиланням перевірте вміст і приберіть паролі, токени, приватні ключі, особисті та конфіденційні дані.\n\nSprig не надсилає захоплений трафік або діагностичні дані автоматично. Активні перевірки виконуйте лише на власних системах або з дозволу їхнього власника.</string>
+    <string name="beta_acknowledge">Зрозуміло</string>
+    <string name="send_feedback">Надіслати відгук</string>
+    <string name="email_unavailable">Поштовий застосунок недоступний. Напишіть на cybercraftstudiopro@gmail.com.</string>
+    <string name="feedback_subject">Відгук про Sprig %1$s</string>
+    <string name="about_title">Про Sprig</string>
+    <string name="about_package">Назва пакета: %1$s</string>
+    <string name="about_version">Версія: %1$s</string>
+    <string name="about_version_code">Код версії: %1$d</string>
+    <string name="about_source">Вихідний код</string>
+    <string name="about_beta">Відкрита бета · Відгуки: cybercraftstudiopro@gmail.com</string>
+    <string name="show_beta_notice">Про відкрите бета-тестування</string>
+    <string name="link_unavailable">Немає застосунку для відкриття цього посилання.</string>
+    <string name="filter_all">Усі</string>
+    <string name="filter_errors">Помилки</string>
+    <string name="selected_apps_count">Вибрано застосунків: %1$d</string>
+    <string name="payload_set_number">Набір даних %1$d</string>
+    <string name="payload_start_progress">Початок: 0 / %1$d</string>
+    <string name="observations_count">Пасивні спостереження: %1$d</string>
+    <string name="recorded_interactions_count">Записано взаємодій: %1$d</string>
+    <string name="new_interactions_count">Нових взаємодій: %1$d</string>
+    <string name="intruder_plan_count">Позицій: %1$d · комбінацій: %2$d · заплановано: %3$d</string>
+    <string name="request_number">Запит №%1$d</string>
+    <string name="request_detail_heading">Запит №%1$d · %2$d · %3$d мс · спроб: %4$d</string>
+    <string name="label_active">активна</string>
+    <string name="label_passive">пасивна</string>
+    <string name="result_order_request">Номер запиту</string>
+    <string name="language_settings">Мова застосунку</string>
+    <string name="language_settings_hint">Англійська та українська. В Android 13+ можна вибрати окрему мову застосунку; у попередніх версіях використовується мова пристрою.</string>
+</resources>

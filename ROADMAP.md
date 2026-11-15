@@ -67,7 +67,8 @@
   - [ ] Повне профілювання Android transport/UI і наступні виміряні оптимізації.
 - [ ] Переглянути 56 lint warnings, локалізувати рядки, пояснити залишені попередження.
   - [x] Перенести 45 dynamic-text місць у English/Ukrainian resources/plurals; localized navigation/WebSocket, виправлені plural candidates. [Review](docs/ANDROID_QUALITY.md).
-  - [ ] Локалізувати всі решта legacy dialogs/core descriptions і завершити remaining lint improvements.
+  - [x] 0.1.1 Preview: English/Ukrainian UI resources для legacy dialogs, tools/settings, VPN notifications і 16 check-category labels/descriptions; version/about/source/feedback та first-launch beta notice. Evidence: [release report](docs/RELEASE_0_1_1_PREVIEW.md).
+  - [ ] Локалізувати технічні core/finding descriptions у звітах і завершити remaining lint improvements.
 
 **Критерій завершення:** опубліковані результати матриці й профілювання; немає відомих критичних втрат трафіку, ANR чи необмеженого росту ресурсів. Числові performance gates визначені за вимірюваннями, а не вигадані наперед.
 
@@ -175,6 +176,8 @@
 - [ ] SBOM, повні third-party notices, актуальні LGPL sources/relinking instructions.
 - [ ] Перевірка permissions, backup/export, secret handling, logs і мережевої ізоляції.
 - [ ] Українська/англійська локалізація, accessibility, onboarding і зрозумілі повідомлення unsupported features.
+  - [x] 0.1.1 Preview: EN/UK інтерфейс і попередження відкритої бети з явним підтвердженням, добровільний feedback без автоматичних вкладень.
+  - [ ] Повна accessibility/device matrix і технічні описи core findings.
 - [ ] Керівництва користувача, приклади локальних fixtures, troubleshooting і політика підтримки.
 - [ ] Канал розповсюдження та оновлень, release notes, integrity verification і crash reporting лише за explicit opt-in.
 

@@ -20,7 +20,7 @@ public final class HarExporter {
     private HarExporter() { }
     public static void write(List<Exchange> exchanges, OutputStream output) throws IOException {
         Writer w = new OutputStreamWriter(output, StandardCharsets.UTF_8);
-        w.write("{\"log\":{\"version\":\"1.2\",\"creator\":{\"name\":\"Sprig\",\"version\":\"0.1 Preview\"},\"entries\":[");
+        w.write("{\"log\":{\"version\":\"1.2\",\"creator\":{\"name\":\"Sprig\",\"version\":\"0.1.1 Preview\"},\"entries\":[");
         boolean first = true;
         for (int i = exchanges.size() - 1; i >= 0; i--) {
             if (!first) w.write(','); first = false;

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="check_headers_title">"Security headers and cookies"</string>
+    <string name="check_headers_description">"Passive response hardening observations."</string>
+    <string name="check_reflection_title">"Contextual reflection"</string>
+    <string name="check_reflection_description">"Harmless marker reflection; reports HTML/attribute/JavaScript context, never execution."</string>
+    <string name="check_sql_error_title">"SQL error differential"</string>
+    <string name="check_sql_error_description">"Apostrophe and benign control; no extraction or time-delay SQL."</string>
+    <string name="check_redirect_title">"External redirect"</string>
+    <string name="check_redirect_description">"Unique reserved-domain target; external Location is not followed."</string>
+    <string name="check_cors_title">"Credentialed CORS"</string>
+    <string name="check_cors_description">"Two distinct origins must both be reflected with credentials enabled."</string>
+    <string name="check_template_title">"Template arithmetic"</string>
+    <string name="check_template_description">"Two harmless arithmetic expressions and a literal control; no function calls or commands."</string>
+    <string name="check_crlf_title">"Response header injection"</string>
+    <string name="check_crlf_description">"Encoded line-break marker compared with a harmless control."</string>
+    <string name="check_host_header_title">"Forwarded-host reflection"</string>
+    <string name="check_host_header_description">"Unique X-Forwarded-Host markers with no-cache headers; no shared-cache retrieval or poisoning."</string>
+    <string name="check_methods_title">"OPTIONS and TRACE"</string>
+    <string name="check_methods_description">"Bounded method discovery and credential-free TRACE marker reflection."</string>
+    <string name="check_sql_boolean_title">"Boolean SQL differential"</string>
+    <string name="check_sql_boolean_description">"Numeric points only; repeated baseline/true/false pairs. Tentative lead, no delays or extraction."</string>
+    <string name="check_cache_title">"Cache policy observations"</string>
+    <string name="check_cache_description">"Cache headers on authenticated or sensitive responses; no cache poisoning."</string>
+    <string name="check_disclosure_title">"Sensitive data and debug disclosures"</string>
+    <string name="check_disclosure_description">"Private-key blocks are redacted; stack traces and debug pages are heuristic observations."</string>
+    <string name="check_directory_title">"Directory listing"</string>
+    <string name="check_directory_description">"Recognizable index title and parent-directory indicators."</string>
+    <string name="check_csrf_title">"CSRF form audit"</string>
+    <string name="check_csrf_description">"State-changing forms and apparent token absence; no form submission."</string>
+    <string name="check_dom_title">"DOM source observations"</string>
+    <string name="check_dom_description">"Source and dangerous-sink patterns; does not execute JavaScript or prove dataflow."</string>
+    <string name="check_oast_title">"User-provided callback probe"</string>
+    <string name="check_oast_description">"Submits only your configured callback address; an HTTP response is not proof of a callback."</string>
+</resources>

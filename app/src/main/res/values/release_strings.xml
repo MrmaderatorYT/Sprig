@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="beta_title">Open beta testing</string>
+    <string name="beta_message">Sprig is in open beta testing. Features may be incomplete and errors may occur.\n\nYou can voluntarily share feedback, bug reports, or other information you choose to provide at cybercraftstudiopro@gmail.com. Please review what you send and remove passwords, tokens, private keys, and personal or confidential data.\n\nSprig does not automatically send captures or diagnostic data. Use active testing only on systems you own or have permission to test.</string>
+    <string name="beta_acknowledge">I understand</string>
+    <string name="send_feedback">Send feedback</string>
+    <string name="email_unavailable">No email app is available. Contact cybercraftstudiopro@gmail.com.</string>
+    <string name="feedback_subject">Sprig %1$s feedback</string>
+    <string name="about_title">About Sprig</string>
+    <string name="about_package">Package name: %1$s</string>
+    <string name="about_version">Version: %1$s</string>
+    <string name="about_version_code">Version code: %1$d</string>
+    <string name="about_source">Source code</string>
+    <string name="about_beta">Open beta · Feedback: cybercraftstudiopro@gmail.com</string>
+    <string name="show_beta_notice">About open beta testing</string>
+    <string name="link_unavailable">No app is available to open this link.</string>
+    <string name="source_code_url" translatable="false">https://github.com/MrmaderatorYT/Sprig</string>
+    <string name="feedback_email" translatable="false">cybercraftstudiopro@gmail.com</string>
+    <string name="filter_all">All</string>
+    <string name="filter_errors">Errors</string>
+    <string name="selected_apps_count">Selected apps: %1$d</string>
+    <string name="payload_set_number">Payload set %1$d</string>
+    <string name="payload_start_progress">Starting 0 / %1$d</string>
+    <string name="observations_count">Passive observations: %1$d</string>
+    <string name="recorded_interactions_count">Recorded interactions: %1$d</string>
+    <string name="new_interactions_count">New interactions: %1$d</string>
+    <string name="intruder_plan_count">Positions: %1$d · combinations: %2$d · planned cases: %3$d</string>
+    <string name="request_number">Request #%1$d</string>
+    <string name="request_detail_heading">Request #%1$d · %2$d · %3$d ms · attempts: %4$d</string>
+    <string name="label_active">active</string>
+    <string name="label_passive">passive</string>
+    <string name="result_order_request">Request #</string>
+    <string name="language_settings">App language</string>
+    <string name="language_settings_hint">English and Ukrainian. Android 13+ supports a separate app language; earlier versions follow the device language.</string>
+</resources>

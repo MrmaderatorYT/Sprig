@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="check_headers_title">"Заголовки безпеки та cookie"</string>
+    <string name="check_headers_description">"Пасивні спостереження щодо захисту відповідей."</string>
+    <string name="check_reflection_title">"Контекстне відображення даних"</string>
+    <string name="check_reflection_description">"Відображення нешкідливого маркера; визначає контекст HTML, атрибута або JavaScript, але не виконання коду."</string>
+    <string name="check_sql_error_title">"Порівняння помилок SQL"</string>
+    <string name="check_sql_error_description">"Апостроф і нешкідливий контрольний запит; без вилучення даних або затримок SQL."</string>
+    <string name="check_redirect_title">"Зовнішнє перенаправлення"</string>
+    <string name="check_redirect_description">"Унікальна ціль у зарезервованому домені; зовнішній заголовок Location не відкривається."</string>
+    <string name="check_cors_title">"CORS з обліковими даними"</string>
+    <string name="check_cors_description">"Два різні джерела мають відображатися з дозволеним передаванням облікових даних."</string>
+    <string name="check_template_title">"Арифметика шаблонів"</string>
+    <string name="check_template_description">"Два нешкідливі арифметичні вирази та текстовий контроль; без викликів функцій чи команд."</string>
+    <string name="check_crlf_title">"Ін’єкція заголовків відповіді"</string>
+    <string name="check_crlf_description">"Порівняння закодованого маркера розриву рядка з нешкідливим контролем."</string>
+    <string name="check_host_header_title">"Відображення переданого хоста"</string>
+    <string name="check_host_header_description">"Унікальні маркери X-Forwarded-Host із забороною кешування; без звернень до спільного кешу чи його отруєння."</string>
+    <string name="check_methods_title">"OPTIONS і TRACE"</string>
+    <string name="check_methods_description">"Обмежене визначення методів і відображення маркера TRACE без облікових даних."</string>
+    <string name="check_sql_boolean_title">"Логічне порівняння SQL"</string>
+    <string name="check_sql_boolean_description">"Лише числові точки; повторні базові, істинні та хибні пари. Попередня ознака без затримок або вилучення даних."</string>
+    <string name="check_cache_title">"Спостереження щодо політики кешу"</string>
+    <string name="check_cache_description">"Заголовки кешування автентифікованих або чутливих відповідей; без отруєння кешу."</string>
+    <string name="check_disclosure_title">"Розкриття чутливих і налагоджувальних даних"</string>
+    <string name="check_disclosure_description">"Блоки приватних ключів приховуються; трасування стека та сторінки налагодження — евристичні спостереження."</string>
+    <string name="check_directory_title">"Перелік вмісту каталогу"</string>
+    <string name="check_directory_description">"Розпізнавання заголовка індексу та ознак посилання на батьківський каталог."</string>
+    <string name="check_csrf_title">"Аналіз форм CSRF"</string>
+    <string name="check_csrf_description">"Форми, що змінюють стан, та видима відсутність токена; без надсилання форм."</string>
+    <string name="check_dom_title">"Спостереження щодо коду DOM"</string>
+    <string name="check_dom_description">"Шаблони джерел і небезпечних операцій; без виконання JavaScript або доведення потоку даних."</string>
+    <string name="check_oast_title">"Проба з вашою адресою зворотного зв’язку"</string>
+    <string name="check_oast_description">"Надсилає лише налаштовану вами адресу; HTTP-відповідь не доводить зворотної взаємодії."</string>
+</resources>
