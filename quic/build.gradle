@@ -1,0 +1,10 @@
+plugins { id 'java-library' }
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+dependencies {
+    api 'tech.kwik:agent15:4.0'
+    implementation 'at.favre.lib:hkdf:2.0.0'
+    implementation 'com.io7m.repackage.io.whitfin:io.whitfin.siphash:2.0.1'
+}

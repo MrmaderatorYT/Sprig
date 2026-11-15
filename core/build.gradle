@@ -1,0 +1,28 @@
+plugins { id 'java-library' }
+configurations { thirdPartySources { transitive = false } }
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+dependencies {
+    thirdPartySources 'tech.kwik:kwik:0.12.2:sources'
+    thirdPartySources 'tech.kwik:agent15:4.0:sources'
+    thirdPartySources 'tech.kwik:qpack:2.1:sources'
+    implementation 'org.bouncycastle:bcprov-jdk18on:1.80.2'
+    implementation 'org.bouncycastle:bcpkix-jdk18on:1.80.2'
+    implementation 'io.netty:netty-codec-http2:4.1.139.Final'
+    implementation 'com.google.code.gson:gson:2.13.2'
+    implementation 'com.google.re2j:re2j:1.8'
+    implementation project(':quic')
+    implementation 'tech.kwik:agent15:4.0'
+    implementation project(':qpack')
+    testImplementation 'junit:junit:4.13.2'
+}
+tasks.register('collectThirdPartySources', Copy) {
+    from configurations.thirdPartySources
+    into rootProject.layout.projectDirectory.dir('third-party/sources')
+}
+test {
+    maxParallelForks = 2
+    testLogging { events 'failed'; exceptionFormat 'full' }
+}

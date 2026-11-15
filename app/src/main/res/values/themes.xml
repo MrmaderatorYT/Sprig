@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Sprig" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">#B6F3C6</item>
+        <item name="colorOnPrimary">#103721</item>
+        <item name="colorPrimaryContainer">#254C32</item>
+        <item name="colorOnPrimaryContainer">#CCFBD6</item>
+        <item name="colorSecondary">#B5CCB8</item>
+        <item name="colorSecondaryContainer">#304B38</item>
+        <item name="colorOnSecondaryContainer">#D3EAD5</item>
+        <item name="colorTertiary">#A5CED5</item>
+        <item name="colorSurface">#101411</item>
+        <item name="colorSurfaceContainer">#1B211D</item>
+        <item name="colorSurfaceContainerHigh">#262D27</item>
+        <item name="colorOnSurface">#E1E8DF</item>
+        <item name="colorOnSurfaceVariant">#A9B7AD</item>
+        <item name="colorOutline">#7B897E</item>
+        <item name="colorOutlineVariant">#354239</item>
+        <item name="colorError">#FFB4AB</item>
+        <item name="android:colorBackground">#101411</item>
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#101411</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+</resources>

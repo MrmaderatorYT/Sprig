@@ -1,0 +1,15 @@
+plugins { id 'application' }
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+application { mainClass = 'com.ccs.sprig.collaborator.Main' }
+distributions { main { contents {
+    from('server.example.properties')
+    from(rootProject.file('docs/COLLABORATOR.md'))
+} } }
+dependencies {
+    implementation project(':oast')
+    testImplementation 'junit:junit:4.13.2'
+}
+test { testLogging { events 'failed'; exceptionFormat 'full' } }

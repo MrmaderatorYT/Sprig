@@ -1,0 +1,21 @@
+plugins { id 'application' }
+java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
+application { mainClass = 'com.ccs.sprig.benchmark.BenchmarkMain' }
+dependencies { implementation project(':core'); testImplementation 'junit:junit:4.13.2' }
+tasks.named('run', JavaExec) { workingDir rootProject.projectDir; maxHeapSize = '256m'; systemProperty 'sprig.buildVersion', project.version.toString() }
+test { maxParallelForks = 1; testLogging { events 'failed'; exceptionFormat 'full' } }
+tasks.register('serveFixture', JavaExec) {
+    workingDir rootProject.projectDir
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ccs.sprig.benchmark.FixtureServerMain'
+    maxHeapSize = '128m'
+    if (project.hasProperty('fixtureArgs')) args project.property('fixtureArgs').toString().split(' ')
+}
+tasks.register('storeAllocation', JavaExec) {
+    workingDir rootProject.projectDir
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.ccs.sprig.benchmark.StoreAllocationBenchmark'
+    systemProperty 'sprig.buildVersion', project.version.toString()
+    maxHeapSize = '256m'
+    if (project.hasProperty('allocationArgs')) args project.property('allocationArgs').toString().split(' ')
+}
