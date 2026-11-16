@@ -45,3 +45,7 @@ No keys, passwords, captures, raw device logs or local SDK paths are release ass
 ADB returned no attached device; no emulator is installed. No fresh on-device packet capture, app upgrade, VPN/disclosure UI acceptance or real provider egress observation is claimed. Earlier Pixel7a results and video remain attributed to their original versions. The loopback User-Agent fixture verifies JVM HTTP requests, with Android default-header behavior supported by AOSP source; it does not replace a device capture.
 
 The Console form and its previously linked privacy policy were not provided/accessed. No Play Console declaration or review submission was changed. Upload the new code3 AAB and correct policy URL before re-review; [technical response and next steps](PLAY_DATA_SAFETY_RESPONSE.md). If the warning remains, request the flagged destination/field/SDK attribution. These changes do not guarantee review approval or prove Google's exact internal detection cause.
+
+## Final server integration recheck
+
+After publishing the verified artifacts, `./gradlew --console=plain --max-workers=2 :collaborator-server:test` was executed against the updated OAST JAR and passed all6 tests (BUILD SUCCESSFUL). The UP-TO-DATE statement above records the earlier packaging phase. Across the complete audit, all215 tests have now been executed successfully; no product source or artifact bytes changed for this final check. The tagged source archive retains the packaging-time report.
