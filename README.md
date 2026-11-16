@@ -1,6 +1,6 @@
 # Sprig — Android web security workspace
 
-**Sprig 0.1.1 Preview** (`versionCode=2`), пакет **`com.ccs.sprig`**. Увесь код застосунку, протокольних модулів, Scanner і серверної частини написаний на **Java**. Gradle — Groovy; немає Kotlin compiler plugin, Compose чи NDK-модуля. Інтерфейс — нативний Material Design 3.
+**Sprig 0.1.2 Preview** (`versionCode=3`), пакет **`com.ccs.sprig`**. Увесь код застосунку, протокольних модулів, Scanner і серверної частини написаний на **Java**. Gradle — Groovy; немає Kotlin compiler plugin, Compose чи NDK-модуля. Інтерфейс — нативний Material Design 3.
 
 Це самостійний інструмент для інспекції й тестування, а не ліцензійна копія продукту PortSwigger. HTTP/2, HTTP/3, WebSocket, Intruder, Scanner і Collaborator реалізовані; повна функціональна паритетність із Burp Suite Professional ще не заявляється.
 
@@ -116,3 +116,11 @@ SHA-256 та fingerprint підпису наведено в release assets/notes
 При першому запуску з’являється попередження про відкриту бету. Підтвердження зберігається після «Зрозуміло»; перезапуск або поворот перед підтвердженням не приховує попередження. Його можна відкрити повторно в налаштуваннях. Відгуки: **cybercraftstudiopro@gmail.com**. Кнопка відкриває поштову чернетку лише з адресою й темою: жодних captures, вкладень або діагностики автоматично не додається і не надсилається.
 
 [Поточний реліз](https://github.com/MrmaderatorYT/Sprig/releases/tag/v0.1.1-preview) · [Сторінка EN/UK](https://mrmaderatoryt.github.io/Sprig/) · [Перевірки 0.1.1](docs/RELEASE_0_1_1_PREVIEW.md). Попередні release-звіти нижче/вище зберігають власні версії та факти.
+
+## Privacy hardening 0.1.2 Preview
+
+[Аудит Data safety](docs/PRIVACY_AUDIT.md) · [Privacy policy EN/UK](https://mrmaderatoryt.github.io/Sprig/privacy.html) · [Реліз0.1.2](https://github.com/MrmaderatorYT/Sprig/releases/tag/v0.1.2-preview).
+
+Вибір VPN читає лише launcher-програми на явну дію користувача; вибір зберігається локально. Вимкнено необов’язкову автоматичну ініціалізацію завантажуваних emoji-шрифтів AndroidX. Перед кожним запуском VPN потрібна згода з описом обробки чутливого трафіку й передавання адресатам. Історія захоплення локальна; сам мережевий трафік передається початковим адресатам. Звіти аудиту не є гарантією відсутності будь-якого передавання даних або схвалення Google Play. Нова перевірка мережі на Android-пристрої не виконана: підключеного пристрою немає.
+
+Перевірки privacy-релізу: [0.1.2 release report](docs/RELEASE_0_1_2_PREVIEW.md). Клієнт Collaborator використовує сталий User-Agent без стандартних відомостей Android про модель/збірку.

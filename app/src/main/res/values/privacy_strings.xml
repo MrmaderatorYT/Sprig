@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="capture_disclosure_title">Before starting VPN capture</string>
+    <string name="capture_disclosure_body">Sprig processes network traffic from the selected apps (or all other apps if none are selected). URLs, headers and message bodies may contain personal information, cookies, passwords or tokens. With HTTPS inspection enabled, trusted test apps can also have their HTTPS traffic inspected.\n\nCaptured history is kept locally in app memory. Network requests are still forwarded to their original destinations. Repeater, Intruder, Scanner, WebSocket and Collaborator contact the destinations you choose when you use those features. Exporting or sending feedback is optional.\n\nSprig does not upload an installed-app inventory or read persistent device identifiers for analytics. There is no developer telemetry endpoint. The app list is used locally for VPN selection. Only inspect traffic you are authorized to inspect. You can stop capture at any time.</string>
+    <string name="capture_disclosure_accept">Agree and continue</string>
+    <string name="app_picker_privacy">Only launcher apps are listed, on demand, for local VPN selection. This selection list is not uploaded or added to capture exports.</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="privacy_policy_url" translatable="false">https://mrmaderatoryt.github.io/Sprig/privacy.html</string>
+</resources>

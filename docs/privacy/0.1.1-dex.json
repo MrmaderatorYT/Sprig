@@ -1,0 +1,22 @@
+{
+  "sha256": "62a93c68b6a989106f57674999d3f773396bfe20f74987aa147f12134d1cf7e2",
+  "dexFiles": 2,
+  "nativeLibraries": 0,
+  "packageInventoryApis": [
+    "Landroid/content/pm/PackageManager;->getInstalledApplications",
+    "Landroid/content/pm/PackageManager;->queryIntentActivities"
+  ],
+  "packageMetadataApis": [
+    "Landroid/content/pm/PackageManager;->getLaunchIntentForPackage",
+    "Landroid/content/pm/PackageManager;->getPackageInfo",
+    "Landroid/content/pm/PackageManager;->queryIntentContentProviders"
+  ],
+  "inputEventDeviceIdApis": [
+    "Landroid/view/KeyEvent;->getDeviceId",
+    "Landroid/view/MotionEvent;->getDeviceId"
+  ],
+  "persistentIdCandidateApis": [],
+  "secureSettingsApis": [],
+  "identifierStringMarkers": [],
+  "trackingSdkClasses": []
+}

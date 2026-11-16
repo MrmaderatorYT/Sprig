@@ -61,7 +61,7 @@
     <string name="capture_offline">OFFLINE</string>
     <string name="capture_running">Capture is running</string>
     <string name="capture_ready">Ready when you are</string>
-    <string name="capture_local">Local VPN · traffic stays on this device</string>
+    <string name="capture_local">Local VPN · capture history stored locally</string>
     <string name="capture_no_root">Local VPN · no root required</string>
     <string name="capture_stop">Stop capture</string>
     <string name="capture_start">Start capture</string>

@@ -62,6 +62,8 @@ public final class CollaboratorClient {
         if(secret==null||secret.indexOf('\r')>=0||secret.indexOf('\n')>=0) throw new IOException("Invalid API credential");
         HttpURLConnection connection=(HttpURLConnection)new URL(base+path).openConnection();
         connection.setInstanceFollowRedirects(false);connection.setConnectTimeout(10000);connection.setReadTimeout(15000);
+        // Do not inherit Android's default User-Agent, which may include model/build metadata.
+        connection.setRequestProperty("User-Agent","Sprig-Collaborator/1");
         connection.setRequestMethod(method);connection.setRequestProperty("Authorization","Bearer "+secret);connection.setRequestProperty("Accept","application/json");
         if(method.equals("POST")) {connection.setDoOutput(true);connection.setFixedLengthStreamingMode(0);connection.getOutputStream().close();}
         try {

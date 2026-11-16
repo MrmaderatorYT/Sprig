@@ -6,7 +6,6 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -78,7 +77,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -370,6 +368,11 @@ public final class MainActivity extends AppCompatActivity {
             startService(new Intent(this, CaptureVpnService.class).setAction(CaptureVpnService.ACTION_STOP));
             main.postDelayed(this::refreshCaptureState, 250); return;
         }
+        if (getSupportFragmentManager().findFragmentByTag(CaptureDisclosureDialog.TAG) == null)
+            new CaptureDisclosureDialog().show(getSupportFragmentManager(), CaptureDisclosureDialog.TAG);
+    }
+
+    void requestCapturePermissions() {
         if (Build.VERSION.SDK_INT >= 33 && ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, NOTIFICATIONS);
             return;
@@ -583,6 +586,7 @@ public final class MainActivity extends AppCompatActivity {
         MaterialCardView apps = card(SURFACE, 20); LinearLayout appsBody = column(); appsBody.setPadding(dp(18), dp(17), dp(18), dp(15)); appsBody.addView(text(UiText.get(R.string.ui_apps_to_capture_e979a), 16, TEXT));
         Set<String> selected = app().getPreferences().getStringSet("selected_apps", Collections.emptySet());
         addMargin(appsBody, text(selected.isEmpty() ? UiText.get(R.string.ui_all_apps_except_sprig_itself_0f56e) : getString(R.string.selected_apps_count, selected.size()), 12, MUTED), 6);
+        addMargin(appsBody, text(getString(R.string.app_picker_privacy), 12, MUTED), 8);
         MaterialButton choose = textButton(UiText.get(R.string.ui_choose_apps_59367)); choose.setOnClickListener(v -> chooseApps()); appsBody.addView(choose); apps.addView(appsBody); addMargin(body, apps, 10);
 
         MaterialCardView scope = card(SURFACE, 20); LinearLayout scopeBody = column(); scopeBody.setPadding(dp(18), dp(17), dp(18), dp(17)); scopeBody.addView(text(UiText.get(R.string.ui_https_host_scope_a60b1), 16, TEXT));
@@ -611,6 +615,8 @@ public final class MainActivity extends AppCompatActivity {
         TextView beta = text(getString(R.string.about_beta), 12, MUTED); beta.setTextIsSelectable(true); addMargin(info, beta, 10);
         MaterialButton source = textButton(getString(R.string.about_source));
         source.setOnClickListener(v -> AppInformation.openSource(this)); info.addView(source);
+        MaterialButton privacy = textButton(getString(R.string.privacy_policy));
+        privacy.setOnClickListener(v -> AppInformation.openPrivacy(this)); info.addView(privacy);
         TextView sourceUrl = text(getString(R.string.source_code_url), 11, MUTED); sourceUrl.setTextIsSelectable(true); info.addView(sourceUrl);
         MaterialButton language = textButton(getString(R.string.language_settings));
         language.setOnClickListener(v -> AppInformation.openLanguageSettings(this)); info.addView(language);
@@ -635,13 +641,7 @@ public final class MainActivity extends AppCompatActivity {
     private void chooseApps() {
         toast(UiText.get(R.string.ui_loading_available_apps_69044));
         submitWork(() -> {
-            List<AppChoice> choices = new ArrayList<>(); PackageManager pm = getPackageManager();
-            for (ApplicationInfo info : pm.getInstalledApplications(0)) {
-                if (info.packageName.equals(getPackageName())) continue;
-                if (pm.getLaunchIntentForPackage(info.packageName) == null) continue;
-                choices.add(new AppChoice(info.loadLabel(pm).toString(), info.packageName));
-            }
-            choices.sort(Comparator.comparing(a -> a.name.toLowerCase(Locale.ROOT)));
+            List<CaptureAppCatalog.Entry> choices = CaptureAppCatalog.load(getPackageManager(), getPackageName());
             onMain(() -> {
                 Set<String> selected = new HashSet<>(app().getPreferences().getStringSet("selected_apps", Collections.emptySet()));
                 String[] names = new String[choices.size()]; boolean[] checked = new boolean[choices.size()];
@@ -809,7 +809,6 @@ public final class MainActivity extends AppCompatActivity {
         final TextView method, path, status, host, timing;
         TrafficHolder(View view, TextView method, TextView path, TextView status, TextView host, TextView timing) { super(view); this.method = method; this.path = path; this.status = status; this.host = host; this.timing = timing; }
     }
-    private static final class AppChoice { final String name, packageName; AppChoice(String name, String packageName) { this.name = name; this.packageName = packageName; } }
     private static final class EditorDraft { boolean initialized; int decoderMode; String url, request, decoder, left, right, protocol; }
 
     private void addPageTitle(LinearLayout body, String title, String subtitle) { TextView heading = text(title, 29, TEXT); heading.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL)); body.addView(heading); TextView sub = text(subtitle, 13, MUTED); addMargin(body, sub, 7); View gap = new View(this); body.addView(gap, new LinearLayout.LayoutParams(1, dp(24))); }

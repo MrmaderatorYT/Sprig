@@ -61,7 +61,7 @@
     <string name="capture_offline">ВИМКНЕНО</string>
     <string name="capture_running">Захоплення працює</string>
     <string name="capture_ready">Готово до роботи</string>
-    <string name="capture_local">Локальний VPN · трафік залишається на пристрої</string>
+    <string name="capture_local">Локальний VPN · історія зберігається локально</string>
     <string name="capture_no_root">Локальний VPN · без root</string>
     <string name="capture_stop">Зупинити захоплення</string>
     <string name="capture_start">Почати захоплення</string>

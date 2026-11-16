@@ -54,3 +54,7 @@ Buffered protocol parsing, bounded queues/bodies, cached leaf credentials, batch
 Fresh origin connections are used per exchange. Pooling, resumption and streaming bodies remain pending. Stage0.4 adds one shared retained-owner byte budget for history, WebSocket and Intruder; transient protocol/native/UI/snapshot memory is not universally reserved. See MEMORY_BUDGET.md. Host unpaced testing also exposes ephemeral-port/TIME_WAIT exhaustion, so the reproducible load harness offers explicit pacing. Current controls do not prove maximum throughput or battery efficiency. Initial Pixel7a/API37 debug runtime and HTTP/IPv4 VpnService evidence are recorded in STAGE_0_4.md. Other API/OEM/browser protocols, sustained profiling and radio/battery validation remain pending.
 
 See `VALIDATION.md`, `DEVICE_TESTING.md`, `WEBSOCKET.md`, `INTRUDER.md`, `SCANNER.md`, `HTTP3.md` and `COLLABORATOR.md` for concrete checks and deployment requirements.
+
+## Privacy boundaries (0.1.2)
+
+Launcher-app catalog is queried on demand on the UI work queue. Only the selected package names persist in private preferences, consumed by VpnService.Builder; catalog data is not a network/export input. Before user-started capture, a DialogFragment requires explicit disclosure consent ahead of normal Android permission flow. Captures are process-local, while upstream traffic still leaves the device. EmojiCompat automatic downloadable-font initialization is disabled; platform font rendering remains. Detailed dependency/DEX evidence and limits: [PRIVACY_AUDIT.md](PRIVACY_AUDIT.md).

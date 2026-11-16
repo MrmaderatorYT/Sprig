@@ -7,8 +7,8 @@ android {
         applicationId 'com.ccs.sprig'
         minSdk 26
         targetSdk 36
-        versionCode 2
-        versionName '0.1.1 Preview'
+        versionCode 3
+        versionName '0.1.2 Preview'
         testInstrumentationRunner 'com.ccs.sprig.validation.Stage04Instrumentation'
     }
     buildTypes {
@@ -39,6 +39,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'androidx.core:core:1.16.0'
     implementation 'androidx.recyclerview:recyclerview:1.4.0'
+    // Already present transitively at runtime; needed on compile classpath for the
+    // manifest override that disables EmojiCompat's downloadable-font initializer.
+    implementation 'androidx.startup:startup-runtime:1.1.1'
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.robolectric:robolectric:4.17'
 }

@@ -175,6 +175,8 @@
 - [ ] CI: JVM/UI checks, lint, release build, dependency/security/license review, artifact hashes.
 - [ ] SBOM, повні third-party notices, актуальні LGPL sources/relinking instructions.
 - [ ] Перевірка permissions, backup/export, secret handling, logs і мережевої ізоляції.
+  - [x] 0.1.2: source/dependency/DEX privacy audit, scoped local launcher picker, disable automatic downloadable emoji fonts, explicit capture disclosure and EN/UK privacy policy; regression fixtures. [Evidence and limits](docs/PRIVACY_AUDIT.md).
+  - [ ] Device network observation and confirmation of Google Play re-review outcome.
 - [ ] Українська/англійська локалізація, accessibility, onboarding і зрозумілі повідомлення unsupported features.
   - [x] 0.1.1 Preview: EN/UK інтерфейс і попередження відкритої бети з явним підтвердженням, добровільний feedback без автоматичних вкладень.
   - [ ] Повна accessibility/device matrix і технічні описи core findings.

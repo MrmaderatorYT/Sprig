@@ -1,6 +1,6 @@
 # Sprig 0.3.0 — перевірка
 
-Актуальні перевірки релізу0.1.1 Preview: [RELEASE_0_1_1_PREVIEW.md](RELEASE_0_1_1_PREVIEW.md).
+Актуальні перевірки релізу0.1.2 Preview: [RELEASE_0_1_2_PREVIEW.md](RELEASE_0_1_2_PREVIEW.md). Попередні0.1.1: [RELEASE_0_1_1_PREVIEW.md](RELEASE_0_1_1_PREVIEW.md).
 
 Це збережений звіт для 0.3.0. Нові результати робочого етапу 0.4 наведено окремо в [STAGE_0_4.md](STAGE_0_4.md).
 

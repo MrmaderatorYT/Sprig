@@ -34,6 +34,9 @@ final class AppInformation {
     static void openSource(Context context) {
         open(context, new Intent(Intent.ACTION_VIEW, Uri.parse(context.getString(R.string.source_code_url))), R.string.link_unavailable);
     }
+    static void openPrivacy(Context context) {
+        open(context, new Intent(Intent.ACTION_VIEW, Uri.parse(context.getString(R.string.privacy_policy_url))), R.string.link_unavailable);
+    }
     private static void open(Context context, Intent intent, int unavailable) {
         try { context.startActivity(intent); }
         catch (ActivityNotFoundException error) { Toast.makeText(context, unavailable, Toast.LENGTH_LONG).show(); }

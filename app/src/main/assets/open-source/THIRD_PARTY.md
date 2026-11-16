@@ -41,3 +41,9 @@ To modify the QUIC library, edit/build the supplied `quic` module. Alternatively
 The `fixture-test-only.p12` file under server test resources contains a deliberately public local test key. It is never used by production services or packaged into the server distribution. Production TLS credentials come from the user's configured PKCS12 store.
 
 RE2J 1.8 is included as an unmodified Maven dependency. Its complete license is supplied in `third-party/RE2J-LICENSE.txt` and the APK notices. Source and license: [RE2J 1.8](https://github.com/google/re2j/tree/re2j-1.8), [license](https://github.com/google/re2j/blob/re2j-1.8/LICENSE).
+
+## Privacy audit 0.1.2 Preview
+
+`androidx.startup:startup-runtime:1.1.1` is now declared directly because the source manifest overrides its provider metadata. This is the same Android-compatible Apache-2.0 artifact already resolved transitively in0.1.1; no runtime library version was upgraded or new SDK added. The explicit compile dependency makes manifest-class verification accurate. The packaged AndroidX notice already covers this component. The default EmojiCompatInitializer (emoji2:1.3.0) is removed from merged startup metadata, disabling automatic downloadable-font provider discovery/loading. System emoji fonts remain; newer emoji coverage on older Android may differ. Lifecycle/profile initializers remain enabled. [Android guidance](https://developer.android.com/develop/ui/views/text-and-emoji/emoji2).
+
+The audited release dependency graph is recorded in docs/privacy/; no advertising, analytics, Firebase, attribution or crash-reporting SDK was found in that graph. Full findings and limits: [PRIVACY_AUDIT.md](PRIVACY_AUDIT.md). `tools/ReleasePrivacyAudit.java` is a JDK17 development utility and is not included in the Android APK.
