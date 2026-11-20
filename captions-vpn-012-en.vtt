@@ -1,0 +1,41 @@
+WEBVTT
+
+00:00.000 --> 00:10.000
+Sprig 0.1.2 Preview · Opening the app.
+Capture is OFF; no VPN is started.
+
+00:10.000 --> 00:24.000
+Full prominent disclosure is shown before VPN access.
+Traffic may contain personal data; history stays in app memory.
+
+00:24.000 --> 00:28.000
+Cancel: disclosure declined.
+VPN remains OFF.
+
+00:28.000 --> 00:34.000
+The app is reopened and Start capture is selected again.
+The disclosure is shown again.
+
+00:34.000 --> 00:42.000
+Agree and continue requests Android VPN permission.
+System dialog: Sprig requests permission to monitor network traffic.
+
+00:42.000 --> 00:52.000
+Android system consent is pending.
+Cancel and OK are available; VPN has not started.
+
+00:52.000 --> 00:56.000
+OK: Android VPN permission granted.
+Sprig starts its local VpnService; the VPN key icon appears.
+
+00:56.000 --> 01:00.000
+Only a local test app is selected for capture.
+20 test requests completed with zero errors.
+
+01:00.000 --> 01:06.000
+VPN is running: 20 requests appear in HTTP history with status 200.
+Requests reach the chosen local test server; history stays on device.
+
+01:06.000 --> 01:10.110
+Stop capture: VPN is stopped by the user.
+Local address and test token are masked; footage runs at normal speed.
